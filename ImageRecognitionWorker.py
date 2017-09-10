@@ -37,11 +37,10 @@ class ImageRecognitionWorker:
         db_entries = self.db.QueryForLabels(data['labels'])
 
         accepted_entries = [[], []]
-    
+        i = 0
         for row in db_entries:
             #print(row)
-
-            if row[3] is None:
+            if row[3] is None or row[3] == '':
                 continue
 
             data = json.loads(row[3])
